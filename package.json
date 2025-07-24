@@ -3,11 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "npx prisma migrate deploy || [ \"$DATABASE_URL\" = \"prisma+postgres://accelerate.prisma-data.net/?api_key=API_KEY\" ] && next build",
+    "dev": "next dev",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "npx prisma generate --no-engine"
+    "db:reset": "prisma migrate reset --force && prisma db seed",
+    "db:seed": "prisma db seed",
+    "db:diagnose": "node scripts/db-diagnostics.js"
   },
   "dependencies": {
     "@prisma/client": "^6.12.0",
