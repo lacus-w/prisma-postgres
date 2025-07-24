@@ -57,7 +57,7 @@ export async function POST(
         content,
         type,
         language: language || null,
-        tags: tags || '',
+        tags: Array.isArray(tags) ? tags : [],
         order: nextOrder,
         isCodeSnippet: type === 'CODE_SNIPPET',
         pageId: params.id

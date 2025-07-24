@@ -36,7 +36,10 @@ export function AddEntryButton({ pageId, onEntryAdded }: AddEntryButtonProps) {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          tags: formData.tags.split(',').map(tag => tag.trim()).filter(tag => tag)
+        }),
       })
 
       if (response.ok) {

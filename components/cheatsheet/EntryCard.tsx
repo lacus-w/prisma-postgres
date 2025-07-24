@@ -24,7 +24,7 @@ export function EntryCard({
     content: entry.content,
     type: entry.type,
     language: entry.language || '',
-    tags: entry.tags
+    tags: Array.isArray(entry.tags) ? entry.tags.join(', ') : entry.tags
   })
 
   const getTypeIcon = (type: string) => {
@@ -56,7 +56,10 @@ export function EntryCard({
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(editData),
+        body: JSON.stringify({
+          ...editData,
+          tags: editData.tags.split(',').map(tag => tag.trim()).filter(tag => tag)
+        }),
       })
 
       if (response.ok) {
@@ -237,14 +240,14 @@ export function EntryCard({
         {renderContent()}
       </div>
       
-      {entry.tags && (
+      {entry.tags && entry.tags.length > 0 && (
         <div className="flex flex-wrap gap-1">
-          {entry.tags.split(',').filter(tag => tag.trim()).map((tag, index) => (
+          {(Array.isArray(entry.tags) ? entry.tags : entry.tags.split(',')).map((tag, index) => (
             <span
               key={index}
               className="px-2 py-1 text-xs bg-purple-50 text-purple-600 rounded-full"
             >
-              #{tag.trim()}
+              #{typeof tag === 'string' ? tag.trim() : tag}
             </span>
           ))}
         </div>

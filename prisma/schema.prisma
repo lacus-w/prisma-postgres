@@ -9,7 +9,7 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -19,8 +19,8 @@ model User {
   email          String          @unique
   password       String
   isAdmin        Boolean         @default(false)
-  createdAt      DateTime        @default(now())
-  updatedAt      DateTime        @updatedAt
+  createdAt      DateTime        @default(now()) @db.Timestamp(6)
+  updatedAt      DateTime        @updatedAt @db.Timestamp(6)
   cheatsheetPages CheatsheetPage[]
 }
 
@@ -32,8 +32,8 @@ model CheatsheetPage {
   color       String            @default("#6366f1") // For acid watercolor theme
   order       Int               @default(0)
   isPublic    Boolean           @default(true)
-  createdAt   DateTime          @default(now())
-  updatedAt   DateTime          @updatedAt
+  createdAt   DateTime          @default(now()) @db.Timestamp(6)
+  updatedAt   DateTime          @updatedAt @db.Timestamp(6)
   authorId    String
   author      User              @relation(fields: [authorId], references: [id], onDelete: Cascade)
   entries     CheatsheetEntry[]
@@ -46,12 +46,12 @@ model CheatsheetEntry {
   title         String
   content       String
   type          EntryType      @default(TERMINOLOGY)
-  tags          String         @default("")
+  tags          String[]       @default([])
   order         Int            @default(0)
   isCodeSnippet Boolean        @default(false)
   language      String?        // For syntax highlighting
-  createdAt     DateTime       @default(now())
-  updatedAt     DateTime       @updatedAt
+  createdAt     DateTime       @default(now()) @db.Timestamp(6)
+  updatedAt     DateTime       @updatedAt @db.Timestamp(6)
   pageId        String
   page          CheatsheetPage @relation(fields: [pageId], references: [id], onDelete: Cascade)
 

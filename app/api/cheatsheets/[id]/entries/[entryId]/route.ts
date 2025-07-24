@@ -29,7 +29,7 @@ export async function PUT(
         content,
         type,
         language: language || null,
-        tags: tags || '',
+        tags: Array.isArray(tags) ? tags : [],
         isCodeSnippet: type === 'CODE_SNIPPET'
       }
     })
