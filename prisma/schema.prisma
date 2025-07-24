@@ -14,13 +14,59 @@ datasource db {
 }
 
 model User {
-  id       String  @id @default(cuid())
-  name     String?
-  email    String  @unique
-  password String
-  posts    Post[]
+  id             String          @id @default(cuid())
+  name           String?
+  email          String          @unique
+  password       String
+  isAdmin        Boolean         @default(false)
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  cheatsheetPages CheatsheetPage[]
 }
 
+model CheatsheetPage {
+  id          String            @id @default(cuid())
+  title       String
+  description String?
+  topic       String
+  color       String            @default("#6366f1") // For acid watercolor theme
+  order       Int               @default(0)
+  isPublic    Boolean           @default(true)
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+  authorId    String
+  author      User              @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  entries     CheatsheetEntry[]
+
+  @@map("cheatsheet_pages")
+}
+
+model CheatsheetEntry {
+  id            String         @id @default(cuid())
+  title         String
+  content       String
+  type          EntryType      @default(TERMINOLOGY)
+  tags          String[]       @default([])
+  order         Int            @default(0)
+  isCodeSnippet Boolean        @default(false)
+  language      String?        // For syntax highlighting
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  pageId        String
+  page          CheatsheetPage @relation(fields: [pageId], references: [id], onDelete: Cascade)
+
+  @@map("cheatsheet_entries")
+}
+
+enum EntryType {
+  TERMINOLOGY
+  FORMULA
+  CODE_SNIPPET
+  NOTE
+  REFERENCE
+}
+
+// Legacy models (keeping for backward compatibility)
 model Post {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
