@@ -48,7 +48,7 @@ async function main() {
             language: 'javascript',
             order: 1,
             isCodeSnippet: true,
-            tags: ['variables', 'syntax']
+            tags: 'variables,syntax'
           },
           {
             title: 'Arrow Functions',
@@ -57,21 +57,21 @@ async function main() {
             language: 'javascript',
             order: 2,
             isCodeSnippet: true,
-            tags: ['functions', 'es6']
+            tags: 'functions,es6'
           },
           {
             title: 'Hoisting',
             content: 'A JavaScript mechanism where variables and function declarations are moved to the top of their containing scope during compilation.',
             type: 'TERMINOLOGY',
             order: 3,
-            tags: ['concepts', 'scope']
+            tags: 'concepts,scope'
           },
           {
             title: 'Array Methods',
             content: 'map(), filter(), reduce(), forEach(), find(), some(), every()',
             type: 'REFERENCE',
             order: 4,
-            tags: ['arrays', 'methods']
+            tags: 'arrays,methods'
           }
         ]
       }
@@ -96,14 +96,14 @@ async function main() {
             language: 'python',
             order: 1,
             isCodeSnippet: true,
-            tags: ['lists', 'comprehension']
+            tags: 'lists,comprehension'
           },
           {
             title: 'Dictionary Methods',
             content: 'get(), keys(), values(), items(), pop(), update(), setdefault()',
             type: 'REFERENCE',
             order: 2,
-            tags: ['dictionary', 'methods']
+            tags: 'dictionary,methods'
           },
           {
             title: 'Lambda Functions',
@@ -112,14 +112,14 @@ async function main() {
             language: 'python',
             order: 3,
             isCodeSnippet: true,
-            tags: ['functions', 'lambda']
+            tags: 'functions,lambda'
           },
           {
             title: 'PEP 8',
             content: 'Python Enhancement Proposal 8 - Style Guide for Python Code. Defines coding conventions for Python.',
             type: 'TERMINOLOGY',
             order: 4,
-            tags: ['style', 'conventions']
+            tags: 'style,conventions'
           }
         ]
       }
@@ -142,35 +142,35 @@ async function main() {
             content: 'x = (-b ± √(b² - 4ac)) / 2a',
             type: 'FORMULA',
             order: 1,
-            tags: ['algebra', 'equations']
+            tags: 'algebra,equations'
           },
           {
             title: 'Pythagorean Theorem',
             content: 'a² + b² = c²',
             type: 'FORMULA',
             order: 2,
-            tags: ['geometry', 'triangles']
+            tags: 'geometry,triangles'
           },
           {
             title: 'Area of Circle',
             content: 'A = πr²',
             type: 'FORMULA',
             order: 3,
-            tags: ['geometry', 'area']
+            tags: 'geometry,area'
           },
           {
             title: 'Derivative',
             content: 'The rate of change of a function with respect to its variable. d/dx[f(x)]',
             type: 'TERMINOLOGY',
             order: 4,
-            tags: ['calculus', 'derivatives']
+            tags: 'calculus,derivatives'
           },
           {
             title: 'Integration by Parts',
             content: '∫u dv = uv - ∫v du',
             type: 'FORMULA',
             order: 5,
-            tags: ['calculus', 'integration']
+            tags: 'calculus,integration'
           }
         ]
       }
@@ -195,7 +195,7 @@ async function main() {
             language: 'css',
             order: 1,
             isCodeSnippet: true,
-            tags: ['layout', 'flexbox']
+            tags: 'layout,flexbox'
           },
           {
             title: 'Grid Layout',
@@ -204,14 +204,14 @@ async function main() {
             language: 'css',
             order: 2,
             isCodeSnippet: true,
-            tags: ['layout', 'grid']
+            tags: 'layout,grid'
           },
           {
             title: 'Box Model',
             content: 'Content → Padding → Border → Margin (from inside out)',
             type: 'TERMINOLOGY',
             order: 3,
-            tags: ['layout', 'box-model']
+            tags: 'layout,box-model'
           },
           {
             title: 'Media Queries',
@@ -220,7 +220,7 @@ async function main() {
             language: 'css',
             order: 4,
             isCodeSnippet: true,
-            tags: ['responsive', 'media-queries']
+            tags: 'responsive,media-queries'
           }
         ]
       }
@@ -245,28 +245,28 @@ async function main() {
             language: 'sql',
             order: 1,
             isCodeSnippet: true,
-            tags: ['query', 'select']
+            tags: 'query,select'
           },
           {
             title: 'JOIN Types',
             content: 'INNER JOIN, LEFT JOIN, RIGHT JOIN, FULL OUTER JOIN',
             type: 'REFERENCE',
             order: 2,
-            tags: ['joins', 'relationships']
+            tags: 'joins,relationships'
           },
           {
             title: 'Aggregate Functions',
             content: 'COUNT(), SUM(), AVG(), MIN(), MAX(), GROUP BY, HAVING',
             type: 'REFERENCE',
             order: 3,
-            tags: ['functions', 'aggregation']
+            tags: 'functions,aggregation'
           },
           {
             title: 'ACID Properties',
             content: 'Atomicity, Consistency, Isolation, Durability - fundamental properties of database transactions',
             type: 'TERMINOLOGY',
             order: 4,
-            tags: ['database', 'transactions']
+            tags: 'database,transactions'
           }
         ]
       }
