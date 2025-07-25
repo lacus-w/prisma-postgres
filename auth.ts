@@ -49,10 +49,21 @@ export const authOptions = {
   },
   callbacks: {
     async jwt({ token, user }) {
-      return { ...token, id: token.id ?? user?.id };
+      if (user) {
+        token.id = user.id;
+        token.isAdmin = (user as any).isAdmin;
+      }
+      return token;
     },
     async session({ session, token }) {
-      return { ...session, user: { ...session.user, id: token.id } };
+      return { 
+        ...session, 
+        user: { 
+          ...session.user, 
+          id: token.id as string,
+          isAdmin: token.isAdmin as boolean
+        } 
+      };
     },
   },
 } satisfies NextAuthOptions;

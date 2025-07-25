@@ -9,24 +9,18 @@ export default function Header() {
   return (
     <header className="w-full bg-white shadow-md py-4 px-8">
       <nav className="flex justify-between items-center">
-        <Link href="/" className="text-xl font-bold text-gray-800 hover:text-blue-600 transition-colors">
-          Superblog
+        <Link href="/" className="text-xl font-bold text-gray-800 hover:text-purple-600 transition-colors">
+          CheatSheet Hub
         </Link>
         <div className="flex items-center space-x-4">
           <Link 
-            href="/posts" 
-            className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition"
+            href="/cheatsheets" 
+            className="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition"
           >
-            Posts
+            Cheatsheets
           </Link>
           {session ? (
             <>
-              <Link 
-                href="/posts/new" 
-                className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition"
-              >
-                New Post
-              </Link>
               <div className="flex items-center space-x-4">
                 <div className="text-sm text-gray-500">
                   {session.user?.name && <div>{session.user.name}</div>}
@@ -41,7 +35,7 @@ export default function Header() {
               </div>
             </>
           ) : (
-            <Link href="/login" className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition">
+            <Link href="/login" className="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">
               Sign In
             </Link>
           )}
